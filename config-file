@@ -1,0 +1,48 @@
+" Initialize plugin manager
+call plug#begin('~/.vim/plugged')
+
+" Plugin for Go development
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Plugin for Java development (using Language Server Protocol)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'artur-shaik/vim-javacomplete2'
+
+" Plugin for JavaScript and Node.js development
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+
+" End plugin initialization
+call plug#end()
+
+" Line numbering
+set number          " Show current line number
+set relativenumber  " Show relative numbers in other lines
+
+" Additional configurations for vim-go (optional)
+let g:go_fmt_command = "goimports"  " Automatically format code on save with goimports
+
+" Coc.nvim settings for using Language Server Protocols
+" Initialize Coc plugin (Common for Java and other languages like Python, JS, etc.)
+let g:java_lsp = {
+\   'name': 'java',
+\   'rootPatterns': ['build.gradle', '.git/'],
+\   'filetypes': ['java'],
+\   'initializationOptions': {},
+\   'settings': {
+\     'java.format.settings.url': 'file:///path/to/eclipse-java-google-style.xml',
+\     'java.format.settings.profile': 'GoogleStyle',
+\   }
+\ }
+
+" Use 'coc-java' for Java LSP features
+" Ensure you have installed the coc-java extension via :CocInstall coc-java
+" You can add extensions for other languages similarly, e.g., coc-tsserver for JS/TS
+
+" Other Vim settings can be added here
+" Example: Syntax highlighting
+syntax enable
+
+" JavaScript and JSX syntax highlighting
+let g:vim_jsx_pretty_colorful_config = 1
+
